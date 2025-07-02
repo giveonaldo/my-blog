@@ -2,26 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PostResource\Pages;
-use App\Filament\Resources\PostResource\RelationManagers;
-use App\Models\Post;
+use App\Filament\Resources\AboutResource\Pages;
+use App\Filament\Resources\AboutResource\RelationManagers;
+use App\Models\About;
 use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PostResource extends Resource
+class AboutResource extends Resource
 {
-    protected static ?string $model = Post::class;
+    protected static ?string $model = About::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -29,8 +24,8 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->required()->maxLength(255),
-                RichEditor::make('body')->required()
+                RichEditor::make('text')
+                    ->required()
                     ->toolbarButtons([
                         'h3',
                         'bold',
@@ -40,13 +35,7 @@ class PostResource extends Resource
                         'numberedList',
                         'blockquote',
                         'codeBlock',
-                    ]),
-                FileUpload::make('image')->directory('images/posts')->nullable(),
-                Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required()
-                    ->searchable()
-                    ->preload(),
+                    ])->columnSpanFull(),
             ]);
     }
 
@@ -54,9 +43,9 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('image')->square(),
-                TextColumn::make('title')->sortable()->searchable(),
-                TextColumn::make('user.name')->label('Author')->sortable(),
+                Tables\Columns\TextColumn::make('text')
+                    ->label('About')
+                    ->limit(50)->columnSpanFull()
             ])
             ->filters([
                 //
@@ -81,9 +70,9 @@ class PostResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPosts::route('/'),
-            'create' => Pages\CreatePost::route('/create'),
-            'edit' => Pages\EditPost::route('/{record}/edit'),
+            'index' => Pages\ListAbouts::route('/'),
+            'create' => Pages\CreateAbout::route('/create'),
+            'edit' => Pages\EditAbout::route('/{record}/edit'),
         ];
     }
 }

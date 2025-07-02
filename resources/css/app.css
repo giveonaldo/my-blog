@@ -6,12 +6,8 @@
     @apply border-l-4 border-blue-500 pl-4 italic text-gray-500;
 }
 
-h1 {
-    @apply text-3xl font-bold text-gray-900 mt-1 mb-4;
-}
-
 h2 {
-    @apply text-2xl font-semibold text-gray-900 mt-6 mb-4;
+    @apply text-3xl font-bold text-gray-900 mt-6 mb-4;
 }
 
 .prose p {

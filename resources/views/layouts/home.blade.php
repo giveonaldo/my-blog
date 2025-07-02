@@ -26,6 +26,10 @@
         {{ $slot }}
     </main>
 
+    @if (!request()->routeis('about'))
+    <x-footer />
+    @endif
+
     @livewireScripts
 </body>
 
