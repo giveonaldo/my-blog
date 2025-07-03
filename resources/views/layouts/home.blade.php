@@ -26,8 +26,8 @@
         {{ $slot }}
     </main>
 
-    @if (!request()->routeis('about'))
-    <x-footer />
+    @if (request()->routeis('home'))
+       <x-footer />
     @endif
 
     @livewireScripts

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .prose blockquote {
-    @apply border-l-4 border-blue-500 pl-4 italic text-gray-500;
+    @apply border-l-4 border-orange-500 pl-4 italic text-gray-500 my-4 text-lg;
 }
 
 h2 {
@@ -20,4 +20,8 @@ code {
 
 pre {
     @apply bg-gray-900 text-white p-4 rounded overflow-x-auto;
+}
+
+p {
+    @apply text-gray-700 text-lg my-4 font-light
 }

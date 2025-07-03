@@ -13,19 +13,20 @@
                     </li>
 
                     <li>
-                        <a wire:navigate class="text-gray-500 transition hover:text-gray-500/75" href="/posts"> Blog </a>
+                        <a wire:navigate class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('posts.index') }}"> Blog </a>
                     </li>
                 </ul>
             </nav>
 
             <div class="flex items-center gap-4">
                 @guest
-                <div class="sm:flex sm:gap-4">
-                    <a wire:navigate class="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+                <div class="sm:flex sm:gap-4 items-center text-teal-600">
+                    <a wire:navigate class="text-sm font-medium transition hover:text-teal-600/75 hover:underline sm:block"
                         href="{{ route('login') }}">
                         Login
                     </a>
-                    <a wire:navigate class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
+                    /
+                    <a wire:navigate class="text-sm font-medium transition hover:text-teal-600/75 hover:underline sm:block"
                         href="{{ route('register') }}">
                         Register
                     </a>

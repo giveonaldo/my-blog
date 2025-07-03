@@ -3,16 +3,16 @@
     <section>
         <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-4 md:grid-cols-4 md:items-center md:gap-8">
-                <div class="md:col-span-3">
+                <a href="/posts/{{ $singlePost->id }}" class="md:col-span-3">
                     <img src="{{ asset('storage/' . $singlePost->image) }}" class="rounded w-full h-96 object-cover"
                         alt="" />
-                </div>
+                </a>
 
                 <div class="md:col-span-1">
                     <div class="max-w-lg md:max-w-none">
-                        <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+                        <a href="/posts/{{ $singlePost->id }}" class="text-2xl font-semibold text-gray-900 sm:text-3xl">
                             {{ Str::limit($singlePost->title, 40) }}
-                        </h2>
+                        </a>
 
                         <div class="mt-4 text-gray-700 prose prose-invert">
                             {!! Str::limit($singlePost->body, 125) !!}
@@ -37,26 +37,26 @@
             </div>
 
             <div class="hidden sm:block sm:basis-56">
-                <img alt=""
+                <img alt="/posts/{{ $post->id }}"
                     src="{{ asset('storage/' . $post->image) }}"
                     class="aspect-square h-full w-full object-cover" />
             </div>
 
             <div class="flex flex-1 flex-col justify-between">
                 <div class="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
-                    <a href="#">
+                    <a href="/posts/{{ $post->id }}">
                         <h3 class="font-bold text-gray-900 uppercase">
                             {{ Str::limit($post->title, 80) }}
                         </h3>
                     </a>
 
                     <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
-                        {!! Str::limit($singlePost->body, 330) !!}
+                        {!! Str::limit($post->body, 330) !!}
                     </p>
                 </div>
 
                 <div class="sm:flex sm:items-end sm:justify-end">
-                    <a href="#"
+                    <a href="/posts/{{ $post->id }}"
                         class="block bg-yellow-300 px-5 py-3 text-center text-xs font-bold text-gray-900 uppercase transition hover:bg-yellow-400">
                         Read Blog
                     </a>
@@ -65,4 +65,8 @@
         </article>
         @endforeach
     </section>
+
+    <a wire:navigate href="{{ route('posts.index') }}"
+        class="mx-auto mt-8 block max-w-max rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700">
+        Read More</a>
 </x-home>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',HomeController::class)->name('home');
 Route::get('/about',AboutController::class)->name('about');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('posts.like');
 
 // Route User Profile
 Route::middleware('auth')->group(function () {
