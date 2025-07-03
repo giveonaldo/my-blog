@@ -21,7 +21,7 @@ Route::get('/',HomeController::class)->name('home');
 Route::get('/about',AboutController::class)->name('about');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
-Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('posts.like');
+
 
 // Route User Profile
 Route::middleware('auth')->group(function () {

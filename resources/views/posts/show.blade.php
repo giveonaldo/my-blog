@@ -9,16 +9,7 @@
                 {!! $post->body !!}
             </div>
             @auth
-            <form method="POST" action="{{ route('posts.like', $post) }}">
-                @csrf
-                <button type="submit">
-                    @if (auth()->user()->likedPosts->contains($post->id))
-                    <img class="w-6 h-6 object-cover" src="{{ asset('images/heart.png') }}" alt="like" />
-                    @else
-                    <img class="w-6 h-6 object-cover" src="{{ asset('images/love.png') }}" alt="like" />
-                    @endif
-                </button>
-            </form>
+            <livewire:like-button :post="$post">
             @endauth
         </div>
     </section>
